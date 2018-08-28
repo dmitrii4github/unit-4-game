@@ -1,35 +1,17 @@
 var numberOfWins = 0;
-var numberOfGuesses = 13;
-var musicianMadonna = "M a d o n n a";
-var musicianStarship = "S t a r s h i p";
-var madonnaImage = "https://imgix.ranker.com/user_node_img/50040/1000793306/original/young-madonna-in-shiny-black-jacket-and-scarf-photo-u1?w=200&q=50&fm=jpg&fit=crop&crop=faces";
-var madonnaSound = "assets/sounds/Frozen.mp3";
-var starshipImage = "https://cbssanfran.files.wordpress.com/2017/04/starship_historical.jpg?w=200";
-var starshipSound = "assets/sounds/WeBuiltThisCity.mp3";
+var numberOfLosses = 0;
 
 $(document).ready(function() {
 
-reset(0, 13, musicianStarship);
+reset();
 
-function reset(wins, g, musician) {
-    
-numberOfGuesses = g;
-numberOfWins = wins;
-var lettersGuessed = "";
-var currentWord = null;
-var initializePlaceholder = true;
-var musicianPlaceholder = "";
-var guesses = [];
-
-var guessNumber = document.getElementById("guess_number"); 
-guessNumber.textContent = "13";
+function reset() {    
 
 
+//document.onkeyup = function(event) {
 
-
-document.onkeyup = function(event) {
-
-    var targetNumber = 53;
+    var targetNumber = Math.floor(Math.random()*100)+19;
+    alert(targetNumber);
 
   $("#number-to-guess").text(targetNumber);
 
@@ -86,74 +68,68 @@ document.onkeyup = function(event) {
       alert("You lose!!");
     }
 
-  }
+});
 
-
-
-
-function getAllIndices(arr, val) {
-    var indices = [], i = -1;
-    while ((i = arr.indexOf(val, i+1)) != -1){
-        indices.push(i);
-    }
-    return indices;
-}
-
-function winFunction(m) {
-    var guessNumber = document.getElementById("guess_number"); 
-    guessNumber.textContent = "13";
-    //alert("You won!");
-    var you_won = document.getElementById("you_won");
-    you_won.textContent = "YOU WON!!!!!"
-    var winsString = document.getElementById("Wins");
-    numberOfWins++;
-    winsString.textContent = numberOfWins;
-    var letters_guessed = document.getElementById("letters_guessed");
-    letters_guessed.textContent = "";
-    var audioElement = document.createElement("audio");
-    var nameOfBand = document.getElementById("name-of-band");
-    var img = document.createElement("IMG");
-    if (m == "M a d o n n a") {
-        nameOfBand.textContent = "FROZEN BY MADONNA";
-        img.src = madonnaImage;
-        document.getElementById('band-photo').appendChild(img);
-        audioElement.setAttribute("src", madonnaSound);
-        audioElement.play();
-    } else {
-        nameOfBand.textContent = "WE BUILT THIS CITY BY STARSHIP";
-        img.src = starshipImage;
-        document.getElementById('band-photo').appendChild(img);
-        audioElement.setAttribute("src", starshipSound);
-        audioElement.play();
-    }
-    confirm("Would you like to guess another mucisician?");
-    audioElement.pause();
-    nameOfBand.textContent = "";
-    document.getElementById('band-photo').removeChild(img);
-    reset(numberOfWins, 13, musicianMadonna);
-}
-
-function loseFunction() {
-    var guessNumber = document.getElementById("guess_number"); 
-    guessNumber.textContent = "13";
-    //alert("You won!");
-    var you_won = document.getElementById("you_won");
-    you_won.textContent = "YOU LOST!!!!!"
-    var letters_guessed = document.getElementById("letters_guessed");
-    letters_guessed.textContent = "";
-    reset(numberOfWins, 13);
-}
-
-function compareNames(name, musician) {
-    for (var i=0, k=0; i<name.length, k<musician.length; i++, k+=2) {
-        if (name[i] == musician[k]){
-            continue;
-        } else {
-            return false;
-        }
-    }
-    return true;
 }
 
 });
+
+
+
+// function winFunction(m) {
+//     var guessNumber = document.getElementById("guess_number"); 
+//     guessNumber.textContent = "13";
+//     //alert("You won!");
+//     var you_won = document.getElementById("you_won");
+//     you_won.textContent = "YOU WON!!!!!"
+//     var winsString = document.getElementById("Wins");
+//     numberOfWins++;
+//     winsString.textContent = numberOfWins;
+//     var letters_guessed = document.getElementById("letters_guessed");
+//     letters_guessed.textContent = "";
+//     var audioElement = document.createElement("audio");
+//     var nameOfBand = document.getElementById("name-of-band");
+//     var img = document.createElement("IMG");
+//     if (m == "M a d o n n a") {
+//         nameOfBand.textContent = "FROZEN BY MADONNA";
+//         img.src = madonnaImage;
+//         document.getElementById('band-photo').appendChild(img);
+//         audioElement.setAttribute("src", madonnaSound);
+//         audioElement.play();
+//     } else {
+//         nameOfBand.textContent = "WE BUILT THIS CITY BY STARSHIP";
+//         img.src = starshipImage;
+//         document.getElementById('band-photo').appendChild(img);
+//         audioElement.setAttribute("src", starshipSound);
+//         audioElement.play();
+//     }
+//     confirm("Would you like to guess another mucisician?");
+//     audioElement.pause();
+//     nameOfBand.textContent = "";
+//     document.getElementById('band-photo').removeChild(img);
+//     reset(numberOfWins, 13, musicianMadonna);
+// }
+
+// function loseFunction() {
+//     var guessNumber = document.getElementById("guess_number"); 
+//     guessNumber.textContent = "13";
+//     //alert("You won!");
+//     var you_won = document.getElementById("you_won");
+//     you_won.textContent = "YOU LOST!!!!!"
+//     var letters_guessed = document.getElementById("letters_guessed");
+//     letters_guessed.textContent = "";
+//     reset(numberOfWins, 13);
+// }
+
+// function compareNames(name, musician) {
+//     for (var i=0, k=0; i<name.length, k<musician.length; i++, k+=2) {
+//         if (name[i] == musician[k]){
+//             continue;
+//         } else {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
 
