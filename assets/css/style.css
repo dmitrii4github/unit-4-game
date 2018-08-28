@@ -10,10 +10,10 @@ body {
 
   #crystalls-collector {
     width: 450px;
-    height: 150px;
+    height: 100px;
     margin-left: 1%;
     margin-top: 1%;
-    padding-top: 3%;
+    padding-top: 2%;
     background-color: brown;
     text-align: center;
   }
@@ -53,11 +53,21 @@ body {
       }
 
       .col-md-1 {
-        color: white;
+        color: black;
         height: 100px;
         margin-left: 2%;
         margin-top: 1%;
         background-color: white;
+        font-size: 34px;
       }
 
+      #total-score {
+        color: black;
+        height: 100px;
+        margin-left: 2%;
+        margin-top: 1%;
+        background-color: white;
+        font-size: 34px;
+        padding-top: 2%;
+      }
   
