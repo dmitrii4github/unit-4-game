@@ -18,15 +18,18 @@ body {
     text-align: center;
   }
 
-  #name-of-band {
-      width: 100%;
-      height: 150px;
+  #game-rules {
+      width: 50%;
+      height: 40%;
       font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
 	  font-size: 17px;
 	  line-height: 135%;
-      color: #777777;
-      margin-left: 40%;
-      margin-top: 30px;
+      color: green;
+      margin-left: 1%;
+      margin-top: 1%;
+      background-color: yellow;
+      padding-bottom: 5%;
+      padding-top: 2%;
   }
     
   .col-md-2 {
