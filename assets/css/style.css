@@ -42,7 +42,7 @@ body {
       padding-top: 2%;    
     }
 
-    .col-md-1 {
+    .col-md-2 {
         color: white;
         height: 100px;
         margin-left: 2%;
@@ -50,6 +50,14 @@ body {
         background-color: seagreen; 
         font-size: 17px; 
         padding-top: 2%;    
+      }
+
+      .col-md-1 {
+        color: white;
+        height: 100px;
+        margin-left: 2%;
+        margin-top: 1%;
+        background-color: white;
       }
 
   
