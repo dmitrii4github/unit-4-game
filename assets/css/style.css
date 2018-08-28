@@ -4,14 +4,18 @@ body {
 	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
 	font-size: 17px;
 	line-height: 135%;
-	color:	#777777;
+	color:	white;
 	background-image: url(../images/concrete-texture.png);
   }
 
-  #hangman-image {
-    width: 700px;
+  #crystalls-collector {
+    width: 450px;
     height: 150px;
-    margin-left: 25%;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding-top: 3%;
+    background-color: brown;
+    text-align: center;
   }
 
   #name-of-band {
