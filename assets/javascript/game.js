@@ -13,7 +13,7 @@ function reset() {
     var targetNumber = Math.floor(Math.random()*100)+19;
     alert(targetNumber);
 
-  $("#number-to-guess").text(targetNumber);
+    $("#random-number").text(targetNumber);
 
   var counter = 0;
 
