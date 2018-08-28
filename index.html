@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Guess Game</title>
+
+  <!-- We link our html to the Bootstrap CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+</head>
+
+<body>
+      <div class="container"></div>
+      <div >
+          <img id="hangman-image" src="assets/images/hangman.png"></img>
+      </div>
+      <div id="name-of-band"></div>
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-2" id="band-photo">
+              <img id="hangman_image" src="assets/images/hangman.jpeg"></img>
+          </div>
+          <div class="col-md-2" id="main-game">
+              <br>
+              <div id="you_won"></div>
+              <br>
+              <div>Press any key to get started</div>
+              <br>
+              <div>If you know the answer, then press Space</div>
+              <br>
+              <div>Wins: </div>
+              <div id="Wins">0</div>
+              <br>
+              <div>Current Word:</div>
+              <div id="current_word">_ _ _ _ _ _ _</div>
+              <br>
+              <div>Number of guesses remaining:</div>
+              <div id="guess_number">13</div>
+              <br>
+              <div>Letters already guessed:</div>
+              <div id="letters_guessed">N/A</div>
+          <div class="col-md-4"></div>
+      </div>
+</body>
+
+</html>
