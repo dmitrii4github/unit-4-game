@@ -29,95 +29,67 @@ guessNumber.textContent = "13";
 
 document.onkeyup = function(event) {
 
-    winsText = document.getElementById("Wins");
-    winsText.textContent = numberOfWins;
-    
-    //alert("Setting guessNumber to "+numberOfGuesses);
-    var guessNumber = document.getElementById("guess_number"); 
-    guessNumber.textContent = numberOfGuesses;
+    var targetNumber = 53;
 
-    var you_won = document.getElementById("you_won");
-    you_won.textContent = "";
+  $("#number-to-guess").text(targetNumber);
 
-    currentWord = document.getElementById("current_word"); 
+  var counter = 0;
 
-    //Display the same number of '_' as the length of musician string
-    if (initializePlaceholder) {
-        for (var i=0; i<musician.length; i++) {
-            if (musician[i] == " ") {
-                musicianPlaceholder += " ";
-            } else {
-                musicianPlaceholder += "_";
-            }
-        }
-        currentWord.textContent = musicianPlaceholder;
-        initializePlaceholder = false;
+  // Now for the hard part. Creating multiple crystals each with their own unique number value.
+
+  // We begin by expanding our array to include four options.
+  var numberOptions = [10, 5, 3, 7];
+
+  // Next we create a for loop to create crystals for every numberOption.
+  for (var i = 0; i < numberOptions.length; i++) {
+
+    // For each iteration, we will create an imageCrystal
+    var imageCrystal = $("<img>");
+
+    // First each crystal will be given the class ".crystal-image".
+    // This will allow the CSS to take effect.
+    imageCrystal.addClass("crystal-image");
+
+    // Each imageCrystal will be given a src link to the crystal image
+    imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+
+    // Each imageCrystal will be given a data attribute called data-crystalValue.
+    // This data attribute will be set equal to the array value.
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+    $("#crystals").append(imageCrystal);
+  }
+
+  // This time, our click event applies to every single crystal on the page. Not just one.
+  $(".crystal-image").on("click", function() {
+
+    // Determining the crystal's value requires us to extract the value from the data attribute.
+    // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+    // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    // We then add the crystalValue to the user's "counter" which is a global variable.
+    // Every click, from every crystal adds to the global counter.
+    counter += crystalValue;
+
+    // All of the same game win-lose logic applies. So the rest remains unchanged.
+    alert("New score: " + counter);
+
+    if (counter === targetNumber) {
+      alert("You win!");
     }
 
-    // Determines which key was pressed.
-    var userGuess = event.key;
-    //alert(userGuess);
-
-    if (userGuess == " ") {
-        name = prompt("Enter the musician's name");
-        if (compareNames(name, musician)) {
-            winFunction(musician);
-        }
+    else if (counter >= targetNumber) {
+      alert("You lose!!");
     }
 
+  }
 
-    if (guesses.indexOf(userGuess) == -1) {
 
-        guesses.push(userGuess);
-        numberOfGuesses--;
 
-        var guessNumber = document.getElementById("guess_number"); 
-        guessNumber.textContent = numberOfGuesses;
-
-        //Display the letter
-        var userGuessIndices = getAllIndices(musician, userGuess[0]);
-        // alert(userGuessIndices[0]);
-        // alert(userGuessIndices[1]);
-        if (userGuessIndices.length != 0) {
-
-            //First, display the musician placeholder with letters that were just guessed
-            var newMusicianPlaceholder = "";
-            // alert("starting loop");
-            // alert("'"+musicianPlaceholder+"'");
-            // alert("'"+newMusicianPlaceholder+"'");
-            for (var i=0; i<musicianPlaceholder.length; i++) {
-                if ((userGuessIndices.indexOf(i) != -1) || ((musicianPlaceholder[i] != "_") && (musicianPlaceholder[i] != " "))) {
-                    newMusicianPlaceholder += musician[i];
-                } else if (musicianPlaceholder[i] == "_") {
-                    newMusicianPlaceholder += "_";
-                } else {
-                    newMusicianPlaceholder += " ";
-                }
-                // alert(newMusicianPlaceholder);
-            }
-
-            musicianPlaceholder = newMusicianPlaceholder;
-        }   
-        // alert(musicianPlaceholder);
-        currentWord.textContent = musicianPlaceholder;
-
-        // display what letters have been guessed
-        lettersGuessed += userGuess;
-        lettersGuessed += " ";
-        var lettersGuessedDiv = document.getElementById("letters_guessed");
-        lettersGuessedDiv.textContent = lettersGuessed;
-
-        if (musicianPlaceholder == musician) {
-            winFunction(musician);
-        }
-    }
-
-    if (numberOfGuesses == 0) {
-        loseFunction();
-    }
-}
-
-}
 
 function getAllIndices(arr, val) {
     var indices = [], i = -1;

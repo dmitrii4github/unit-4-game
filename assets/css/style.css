@@ -5,7 +5,7 @@ body {
 	font-size: 17px;
 	line-height: 135%;
 	color:	#777777;
-	background: black;
+	background-image: url(../images/concrete-texture.png);
   }
 
   #hangman-image {
