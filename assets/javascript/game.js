@@ -1,5 +1,6 @@
 var numberOfWins = 0;
 var numberOfLosses = 0;
+var counter = 0;
 
 $(document).ready(function() {
 
@@ -7,6 +8,7 @@ reset();
 
 function reset() {    
 
+    $("#total-score").text("0");
 
 //document.onkeyup = function(event) {
 
@@ -14,7 +16,7 @@ function reset() {
 
     $("#random-number").text(targetNumber);
 
-    var counter = 0;
+    counter = 0;
 
     // Now for the hard part. Creating multiple crystals each with their own unique number value.
     // We begin by expanding our array to include four options.
@@ -56,12 +58,20 @@ function reset() {
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     alert("New score: " + counter);
 
-    if (counter === targetNumber) {
+    $("#total-score").text(counter);
+
+    if (counter == targetNumber) {
       alert("You win!");
+      numberOfWins++;
+      $("#wins").text(numberOfWins);
+      reset();
     }
 
-    else if (counter >= targetNumber) {
+    else if (counter > targetNumber) {
       alert("You lose!!");
+      numberOfLosses++;
+      $("#losses").text(numberOfLosses);
+      reset();
     }
 
 });
