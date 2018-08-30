@@ -1,6 +1,9 @@
 var numberOfWins = 0;
 var numberOfLosses = 0;
 var counter = 0;
+var targetNumber = 0;
+var numberOptions = [10, 5, 3, 7];
+var crystalValue = [];
 
 $(document).ready(function() {
 
@@ -12,21 +15,22 @@ function reset() {
 
 //document.onkeyup = function(event) {
 
-    var targetNumber = Math.floor(Math.random()*100)+19;
+    targetNumber = Math.floor(Math.random()*100)+19;
 
     $("#random-number").text(targetNumber);
 
     counter = 0;
 
+    $("#total-score").text(0);
+
     // Now for the hard part. Creating multiple crystals each with their own unique number value.
     // We begin by expanding our array to include four options.
-    var numberOptions = [10, 5, 3, 7];
-    var crystalValue = [];
+    
 
     // Next we create a for loop to create crystals for every numberOption.
     for (var i = 0; i < numberOptions.length; i++) {        
         var option = Math.floor(Math.random()*4);
-        alert(option);    
+        //alert(option);    
         crystalValue[i] = numberOptions[option];
         switch (i) {
             case 0:
@@ -38,7 +42,7 @@ function reset() {
             case 3:
                 $("#crystal3").attr("data-crystalvalue", crystalValue[3]);
         }
-        alert("Set crystal #"+i+" to "+crystalValue[i]);
+        //alert("Set crystal #"+i+" to "+crystalValue[i]);
     }
 
   // This time, our click event applies to every single crystal on the page. Not just one.
@@ -56,19 +60,19 @@ function reset() {
     counter += crystalValue;
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
-    alert("New score: " + counter);
+    //alert("New score: " + counter);
 
     $("#total-score").text(counter);
 
     if (counter == targetNumber) {
-      alert("You win!");
+      //alert("You win!");
       numberOfWins++;
       $("#wins").text(numberOfWins);
       reset();
     }
 
     else if (counter > targetNumber) {
-      alert("You lose!!");
+      //alert("You lose!!");
       numberOfLosses++;
       $("#losses").text(numberOfLosses);
       reset();
