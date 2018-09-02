@@ -3,7 +3,7 @@ var numberOfLosses = 0;
 var counter = 0;
 var targetNumber = 0;
 var numberOptions = [10, 5, 3, 7];
-var crystalValue = [];
+//var crystalValue = [];
 
 $(document).ready(function() {
 
@@ -28,21 +28,26 @@ function reset() {
     
 
     // Next we create a for loop to create crystals for every numberOption.
-    for (var i = 0; i < numberOptions.length; i++) {        
-        var option = Math.floor(Math.random()*4);
+    for (var i = 3; i >= 0; i--) {        
+        //var option = Math.floor(Math.random()*4);
         //alert(option);    
-        crystalValue[i] = numberOptions[option];
+        var crystalValueToSet = removeAtRandomPosition(i+1);
+        alert("Set crystal #"+i+" to "+crystalValueToSet);
         switch (i) {
             case 0:
-                $("#crystal0").attr("data-crystalvalue", crystalValue[0]);                
+                $("#crystal0").attr("data-crystalvalue", crystalValueToSet);
+                break;                
             case 1:
-                $("#crystal1").attr("data-crystalvalue", crystalValue[1]);
+                $("#crystal1").attr("data-crystalvalue", crystalValueToSet);
+                break;
             case 2:
-                $("#crystal2").attr("data-crystalvalue", crystalValue[2]);
+                $("#crystal2").attr("data-crystalvalue", crystalValueToSet);
+                break;
             case 3:
-                $("#crystal3").attr("data-crystalvalue", crystalValue[3]);
+                $("#crystal3").attr("data-crystalvalue", crystalValueToSet);
+                break;
         }
-        //alert("Set crystal #"+i+" to "+crystalValue[i]);
+        
     }
 
   // This time, our click event applies to every single crystal on the page. Not just one.
@@ -83,6 +88,14 @@ function reset() {
 }
 
 });
+
+function removeAtRandomPosition(lengthOfArray) {
+    var indexToRemove = Math.floor(Math.random()*lengthOfArray);
+    alert("indexToRemove:"+indexToRemove);
+    var toReturn = numberOptions.splice(indexToRemove, 1);
+    alert("toReturn:"+toReturn);
+    return toReturn;
+}
 
 
 
