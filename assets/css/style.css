@@ -58,7 +58,7 @@ body {
         margin-left: 2%;
         margin-top: 1%;
         background-color: white;
-        font-size: 34px;
+        font-size: 30px;
       }
 
       #total-score {
@@ -69,5 +69,10 @@ body {
         background-color: white;
         font-size: 34px;
         padding-top: 2%;
+      }
+
+      .score {
+        padding-top: 35px;
+        padding-right: 15px;
       }
   
