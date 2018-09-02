@@ -9,7 +9,11 @@ $(document).ready(function() {
 
 reset();
 
-function reset() {    
+function reset() { 
+
+    $(".crystal-image").unbind("click");
+    
+    numberOptions = [10, 5, 3, 7];
 
     $("#total-score").text("0");
 
@@ -32,18 +36,22 @@ function reset() {
         //var option = Math.floor(Math.random()*4);
         //alert(option);    
         var crystalValueToSet = removeAtRandomPosition(i+1);
-        alert("Set crystal #"+i+" to "+crystalValueToSet);
+        //alert("Set crystal #"+i+" to "+crystalValueToSet);
         switch (i) {
             case 0:
+                $("#crystal0").removeAttr("data-crystalvalue");
                 $("#crystal0").attr("data-crystalvalue", crystalValueToSet);
                 break;                
             case 1:
+                $("#crystal1").removeAttr("data-crystalvalue");
                 $("#crystal1").attr("data-crystalvalue", crystalValueToSet);
                 break;
             case 2:
+                $("#crystal2").removeAttr("data-crystalvalue");
                 $("#crystal2").attr("data-crystalvalue", crystalValueToSet);
                 break;
             case 3:
+                $("#crystal3").removeAttr("data-crystalvalue");
                 $("#crystal3").attr("data-crystalvalue", crystalValueToSet);
                 break;
         }
@@ -51,14 +59,15 @@ function reset() {
     }
 
   // This time, our click event applies to every single crystal on the page. Not just one.
-  $(".crystal-image").on("click", function() {
-
+    $(".crystal-image").on("click", function() {
+ 
     // Determining the crystal's value requires us to extract the value from the data attribute.
     // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
     // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
     // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
 
     var crystalValue = ($(this).attr("data-crystalvalue"));
+    //alert("crystalValue:"+crystalValue);
     crystalValue = parseInt(crystalValue);
     // We then add the crystalValue to the user's "counter" which is a global variable.
     // Every click, from every crystal adds to the global counter.
@@ -91,69 +100,8 @@ function reset() {
 
 function removeAtRandomPosition(lengthOfArray) {
     var indexToRemove = Math.floor(Math.random()*lengthOfArray);
-    alert("indexToRemove:"+indexToRemove);
+    //alert("indexToRemove:"+indexToRemove);
     var toReturn = numberOptions.splice(indexToRemove, 1);
-    alert("toReturn:"+toReturn);
+    //alert("toReturn:"+toReturn);
     return toReturn;
 }
-
-
-
-
-// function winFunction(m) {
-//     var guessNumber = document.getElementById("guess_number"); 
-//     guessNumber.textContent = "13";
-//     //alert("You won!");
-//     var you_won = document.getElementById("you_won");
-//     you_won.textContent = "YOU WON!!!!!"
-//     var winsString = document.getElementById("Wins");
-//     numberOfWins++;
-//     winsString.textContent = numberOfWins;
-//     var letters_guessed = document.getElementById("letters_guessed");
-//     letters_guessed.textContent = "";
-//     var audioElement = document.createElement("audio");
-//     var nameOfBand = document.getElementById("name-of-band");
-//     var img = document.createElement("IMG");
-//     if (m == "M a d o n n a") {
-//         nameOfBand.textContent = "FROZEN BY MADONNA";
-//         img.src = madonnaImage;
-//         document.getElementById('band-photo').appendChild(img);
-//         audioElement.setAttribute("src", madonnaSound);
-//         audioElement.play();
-//     } else {
-//         nameOfBand.textContent = "WE BUILT THIS CITY BY STARSHIP";
-//         img.src = starshipImage;
-//         document.getElementById('band-photo').appendChild(img);
-//         audioElement.setAttribute("src", starshipSound);
-//         audioElement.play();
-//     }
-//     confirm("Would you like to guess another mucisician?");
-//     audioElement.pause();
-//     nameOfBand.textContent = "";
-//     document.getElementById('band-photo').removeChild(img);
-//     reset(numberOfWins, 13, musicianMadonna);
-// }
-
-// function loseFunction() {
-//     var guessNumber = document.getElementById("guess_number"); 
-//     guessNumber.textContent = "13";
-//     //alert("You won!");
-//     var you_won = document.getElementById("you_won");
-//     you_won.textContent = "YOU LOST!!!!!"
-//     var letters_guessed = document.getElementById("letters_guessed");
-//     letters_guessed.textContent = "";
-//     reset(numberOfWins, 13);
-// }
-
-// function compareNames(name, musician) {
-//     for (var i=0, k=0; i<name.length, k<musician.length; i++, k+=2) {
-//         if (name[i] == musician[k]){
-//             continue;
-//         } else {
-//             return false;
-//         }
-//     }
-//     return true;
-// }
-
-
